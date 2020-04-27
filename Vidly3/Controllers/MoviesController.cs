@@ -26,14 +26,7 @@ namespace Vidly3.Controllers
 
         public ActionResult Index()
         {
-            var movies = _context.Movies.Include(c => c.Genre).ToList();
-
-            var movieViewModel = new MovieViewModel
-            {
-                Movies = movies
-            };
-
-            return View(movieViewModel);
+            return View();
         }
 
         [Route("Movies/Details/{movieId}")]
@@ -57,6 +50,7 @@ namespace Vidly3.Controllers
             return View("MovieForm", movieFormViewModel);
         }
 
+        [Route("Movies/Edit/{movieId}")]
         public ActionResult Edit(int movieId)
         {
             var movie = _context.Movies.FirstOrDefault(m => m.Id == movieId);

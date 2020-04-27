@@ -28,14 +28,7 @@ namespace Vidly3.Controllers
         // GET: Customers
         public ActionResult Index()
         {
-            var customers = _context.Customers.Include(c => c.MembershipType).ToList();
-
-            var customerViewModel = new CustomerViewModel
-            {                
-                Customers = customers
-            };
-
-            return View(customerViewModel);
+            return View();
         }
 
         [Route("Customers/Details/{customerId}")]
@@ -95,6 +88,8 @@ namespace Vidly3.Controllers
 
             return RedirectToAction("Index", "Customers");
         }
+
+        [Route("Customers/Edit/{customerId}")]
 
         public ActionResult Edit(int customerId)
         {
